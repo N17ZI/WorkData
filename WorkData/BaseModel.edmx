@@ -1,0 +1,1220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Database_circusModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actor_circus">
+          <Key>
+            <PropertyRef Name="Id_actor" />
+          </Key>
+          <Property Name="Id_actor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worker" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id_author" />
+          </Key>
+          <Property Name="Id_author" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worker" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="circus program">
+          <Key>
+            <PropertyRef Name="Id_program" />
+          </Key>
+          <Property Name="Id_program" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="presentation" Type="int" Nullable="false" />
+          <Property Name="data_premiere" Type="date" Nullable="false" />
+          <Property Name="period" Type="date" Nullable="false" />
+          <Property Name="daysandtimes" Type="date" Nullable="false" />
+          <Property Name="cost_ticket" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="circus troupe">
+          <Key>
+            <PropertyRef Name="Id_troupe" />
+          </Key>
+          <Property Name="Id_troupe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="presentation" Type="int" Nullable="false" />
+          <Property Name="actor_circus" Type="int" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id_city" />
+          </Key>
+          <Property Name="Id_city" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conductor">
+          <Key>
+            <PropertyRef Name="Id_conductor" />
+          </Key>
+          <Property Name="Id_conductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worker" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Designer">
+          <Key>
+            <PropertyRef Name="Id_designer" />
+          </Key>
+          <Property Name="Id_designer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worker" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="Id_director" />
+          </Key>
+          <Property Name="Id_director" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worker" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_gender" />
+          </Key>
+          <Property Name="Id_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="Id_genre" />
+          </Key>
+          <Property Name="Id_genre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="program_Id" Type="int" Nullable="false" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreateAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job title">
+          <Key>
+            <PropertyRef Name="Id_job" />
+          </Key>
+          <Property Name="Id_job" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="presentation">
+          <Key>
+            <PropertyRef Name="Id_presentation" />
+          </Key>
+          <Property Name="Id_presentation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Director" Type="int" Nullable="false" />
+          <Property Name="Designer" Type="int" Nullable="false" />
+          <Property Name="Conductor" Type="int" Nullable="false" />
+          <Property Name="author" Type="int" Nullable="false" />
+          <Property Name="Genre" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Database_circus.dbo.Role" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tour schedule">
+          <Key>
+            <PropertyRef Name="Id_schedule" />
+          </Key>
+          <Property Name="Id_schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="presentation" Type="int" Nullable="false" />
+          <Property Name="data_start" Type="date" Nullable="false" />
+          <Property Name="data_end" Type="date" Nullable="false" />
+          <Property Name="Place_spot" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="Id_type" />
+          </Key>
+          <Property Name="Id_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workers_circus">
+          <Key>
+            <PropertyRef Name="Id_worker" />
+          </Key>
+          <Property Name="Id_worker" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Middlename" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_title" Type="int" Nullable="false" />
+          <Property Name="City" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_actor_circus_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="actor_circus" Type="Self.actor_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="actor_circus">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Author" Type="Self.Author" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_circus program_presentation">
+          <End Role="presentation" Type="Self.presentation" Multiplicity="1" />
+          <End Role="circus program" Type="Self.circus program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presentation">
+              <PropertyRef Name="Id_presentation" />
+            </Principal>
+            <Dependent Role="circus program">
+              <PropertyRef Name="presentation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_circus troupe_actor_circus">
+          <End Role="actor_circus" Type="Self.actor_circus" Multiplicity="1" />
+          <End Role="circus troupe" Type="Self.circus troupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="actor_circus">
+              <PropertyRef Name="Id_actor" />
+            </Principal>
+            <Dependent Role="circus troupe">
+              <PropertyRef Name="actor_circus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_circus troupe_presentation">
+          <End Role="presentation" Type="Self.presentation" Multiplicity="1" />
+          <End Role="circus troupe" Type="Self.circus troupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presentation">
+              <PropertyRef Name="Id_presentation" />
+            </Principal>
+            <Dependent Role="circus troupe">
+              <PropertyRef Name="presentation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conductor_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Conductor" Type="Self.Conductor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Conductor">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Designer_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Designer" Type="Self.Designer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Designer">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Director_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Director" Type="Self.Director" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Director">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id_author" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Conductor">
+          <End Role="Conductor" Type="Self.Conductor" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductor">
+              <PropertyRef Name="Id_conductor" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Conductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Designer">
+          <End Role="Designer" Type="Self.Designer" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designer">
+              <PropertyRef Name="Id_designer" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Designer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Director">
+          <End Role="Director" Type="Self.Director" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="Id_director" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="Id_genre" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_type">
+          <End Role="type" Type="Self.type" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="Id_type" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_circus troupe">
+          <End Role="circus troupe" Type="Self.circus troupe" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="circus troupe">
+              <PropertyRef Name="Id_troupe" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tour schedule_presentation">
+          <End Role="presentation" Type="Self.presentation" Multiplicity="1" />
+          <End Role="tour schedule" Type="Self.tour schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presentation">
+              <PropertyRef Name="Id_presentation" />
+            </Principal>
+            <Dependent Role="tour schedule">
+              <PropertyRef Name="presentation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_circus_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id_city" />
+            </Principal>
+            <Dependent Role="Workers_circus">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_circus_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_gender" />
+            </Principal>
+            <Dependent Role="Workers_circus">
+              <PropertyRef Name="Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_circus_Job title">
+          <End Role="Job title" Type="Self.Job title" Multiplicity="1" />
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job title">
+              <PropertyRef Name="Id_job" />
+            </Principal>
+            <Dependent Role="Workers_circus">
+              <PropertyRef Name="Job_title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Database_circusModelContainer">
+          <EntitySet Name="actor_circus" EntityType="Self.actor_circus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="circus program" EntityType="Self.circus program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="circus troupe" EntityType="Self.circus troupe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conductor" EntityType="Self.Conductor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designer" EntityType="Self.Designer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Director" EntityType="Self.Director" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job title" EntityType="Self.Job title" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="presentation" EntityType="Self.presentation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour schedule" EntityType="Self.tour schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workers_circus" EntityType="Self.Workers_circus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Role].[Id_role] AS [Id_role], 
+    [Role].[Name] AS [Name]
+    FROM [dbo].[Role] AS [Role]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_actor_circus_Workers_circus" Association="Self.FK_actor_circus_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="actor_circus" EntitySet="actor_circus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Workers_circus" Association="Self.FK_Author_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Author" EntitySet="Author" />
+          </AssociationSet>
+          <AssociationSet Name="FK_circus program_presentation" Association="Self.FK_circus program_presentation">
+            <End Role="presentation" EntitySet="presentation" />
+            <End Role="circus program" EntitySet="circus program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_circus troupe_actor_circus" Association="Self.FK_circus troupe_actor_circus">
+            <End Role="actor_circus" EntitySet="actor_circus" />
+            <End Role="circus troupe" EntitySet="circus troupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_circus troupe_presentation" Association="Self.FK_circus troupe_presentation">
+            <End Role="presentation" EntitySet="presentation" />
+            <End Role="circus troupe" EntitySet="circus troupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conductor_Workers_circus" Association="Self.FK_Conductor_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Conductor" EntitySet="Conductor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Designer_Workers_circus" Association="Self.FK_Designer_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Designer" EntitySet="Designer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Director_Workers_circus" Association="Self.FK_Director_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Director" EntitySet="Director" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Author" Association="Self.FK_presentation_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Conductor" Association="Self.FK_presentation_Conductor">
+            <End Role="Conductor" EntitySet="Conductor" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Designer" Association="Self.FK_presentation_Designer">
+            <End Role="Designer" EntitySet="Designer" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Director" Association="Self.FK_presentation_Director">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Genre" Association="Self.FK_presentation_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_type" Association="Self.FK_presentation_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_circus troupe" Association="Self.FK_Role_circus troupe">
+            <End Role="circus troupe" EntitySet="circus troupe" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tour schedule_presentation" Association="Self.FK_tour schedule_presentation">
+            <End Role="presentation" EntitySet="presentation" />
+            <End Role="tour schedule" EntitySet="tour schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_circus_City" Association="Self.FK_Workers_circus_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_circus_Gender" Association="Self.FK_Workers_circus_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_circus_Job title" Association="Self.FK_Workers_circus_Job title">
+            <End Role="Job title" EntitySet="Job title" />
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database_circusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="actor_circus">
+          <Key>
+            <PropertyRef Name="Id_actor" />
+          </Key>
+          <Property Name="Id_actor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worker" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_actor_circus_Workers_circus" FromRole="actor_circus" ToRole="Workers_circus" />
+          <NavigationProperty Name="circus_troupe" Relationship="Self.FK_circus_troupe_actor_circus" FromRole="actor_circus" ToRole="circus_troupe" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id_author" />
+          </Key>
+          <Property Name="Id_author" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worker" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_Author_Workers_circus" FromRole="Author" ToRole="Workers_circus" />
+          <NavigationProperty Name="presentation" Relationship="Self.FK_presentation_Author" FromRole="Author" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="circus_program">
+          <Key>
+            <PropertyRef Name="Id_program" />
+          </Key>
+          <Property Name="Id_program" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="presentation" Type="Int32" Nullable="false" />
+          <Property Name="data_premiere" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="period" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="daysandtimes" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cost_ticket" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="presentation1" Relationship="Self.FK_circus_program_presentation" FromRole="circus_program" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="circus_troupe">
+          <Key>
+            <PropertyRef Name="Id_troupe" />
+          </Key>
+          <Property Name="Id_troupe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="presentation" Type="Int32" Nullable="false" />
+          <Property Name="actor_circus" Type="Int32" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="actor_circus1" Relationship="Self.FK_circus_troupe_actor_circus" FromRole="circus_troupe" ToRole="actor_circus" />
+          <NavigationProperty Name="presentation1" Relationship="Self.FK_circus_troupe_presentation" FromRole="circus_troupe" ToRole="presentation" />
+          <NavigationProperty Name="Role1" Relationship="Self.FK_Role_circus_troupe" FromRole="circus_troupe" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id_city" />
+          </Key>
+          <Property Name="Id_city" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_Workers_circus_City" FromRole="City" ToRole="Workers_circus" />
+        </EntityType>
+        <EntityType Name="Conductor">
+          <Key>
+            <PropertyRef Name="Id_conductor" />
+          </Key>
+          <Property Name="Id_conductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worker" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_Conductor_Workers_circus" FromRole="Conductor" ToRole="Workers_circus" />
+          <NavigationProperty Name="presentation" Relationship="Self.FK_presentation_Conductor" FromRole="Conductor" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="Designer">
+          <Key>
+            <PropertyRef Name="Id_designer" />
+          </Key>
+          <Property Name="Id_designer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worker" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_Designer_Workers_circus" FromRole="Designer" ToRole="Workers_circus" />
+          <NavigationProperty Name="presentation" Relationship="Self.FK_presentation_Designer" FromRole="Designer" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="Id_director" />
+          </Key>
+          <Property Name="Id_director" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worker" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_Director_Workers_circus" FromRole="Director" ToRole="Workers_circus" />
+          <NavigationProperty Name="presentation" Relationship="Self.FK_presentation_Director" FromRole="Director" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_gender" />
+          </Key>
+          <Property Name="Id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_Workers_circus_Gender" FromRole="Gender" ToRole="Workers_circus" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="Id_genre" />
+          </Key>
+          <Property Name="Id_genre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="presentation" Relationship="Self.FK_presentation_Genre" FromRole="Genre" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="program_Id" Type="Int32" Nullable="false" />
+          <Property Name="Operation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Job_title">
+          <Key>
+            <PropertyRef Name="Id_job" />
+          </Key>
+          <Property Name="Id_job" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Workers_circus" Relationship="Self.FK_Workers_circus_Job_title" FromRole="Job_title" ToRole="Workers_circus" />
+        </EntityType>
+        <EntityType Name="presentation">
+          <Key>
+            <PropertyRef Name="Id_presentation" />
+          </Key>
+          <Property Name="Id_presentation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Director" Type="Int32" Nullable="false" />
+          <Property Name="Designer" Type="Int32" Nullable="false" />
+          <Property Name="Conductor" Type="Int32" Nullable="false" />
+          <Property Name="author" Type="Int32" Nullable="false" />
+          <Property Name="Genre" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Author1" Relationship="Self.FK_presentation_Author" FromRole="presentation" ToRole="Author" />
+          <NavigationProperty Name="circus_program" Relationship="Self.FK_circus_program_presentation" FromRole="presentation" ToRole="circus_program" />
+          <NavigationProperty Name="circus_troupe" Relationship="Self.FK_circus_troupe_presentation" FromRole="presentation" ToRole="circus_troupe" />
+          <NavigationProperty Name="Conductor1" Relationship="Self.FK_presentation_Conductor" FromRole="presentation" ToRole="Conductor" />
+          <NavigationProperty Name="Designer1" Relationship="Self.FK_presentation_Designer" FromRole="presentation" ToRole="Designer" />
+          <NavigationProperty Name="Director1" Relationship="Self.FK_presentation_Director" FromRole="presentation" ToRole="Director" />
+          <NavigationProperty Name="Genre1" Relationship="Self.FK_presentation_Genre" FromRole="presentation" ToRole="Genre" />
+          <NavigationProperty Name="type1" Relationship="Self.FK_presentation_type" FromRole="presentation" ToRole="type" />
+          <NavigationProperty Name="tour_schedule" Relationship="Self.FK_tour_schedule_presentation" FromRole="presentation" ToRole="tour_schedule" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tour_schedule">
+          <Key>
+            <PropertyRef Name="Id_schedule" />
+          </Key>
+          <Property Name="Id_schedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="presentation" Type="Int32" Nullable="false" />
+          <Property Name="data_start" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data_end" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Place_spot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="presentation1" Relationship="Self.FK_tour_schedule_presentation" FromRole="tour_schedule" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="Id_type" />
+          </Key>
+          <Property Name="Id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="presentation" Relationship="Self.FK_presentation_type" FromRole="type" ToRole="presentation" />
+        </EntityType>
+        <EntityType Name="Workers_circus">
+          <Key>
+            <PropertyRef Name="Id_worker" />
+          </Key>
+          <Property Name="Id_worker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Middlename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Job_title" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="actor_circus" Relationship="Self.FK_actor_circus_Workers_circus" FromRole="Workers_circus" ToRole="actor_circus" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_Author_Workers_circus" FromRole="Workers_circus" ToRole="Author" />
+          <NavigationProperty Name="City1" Relationship="Self.FK_Workers_circus_City" FromRole="Workers_circus" ToRole="City" />
+          <NavigationProperty Name="Conductor" Relationship="Self.FK_Conductor_Workers_circus" FromRole="Workers_circus" ToRole="Conductor" />
+          <NavigationProperty Name="Designer" Relationship="Self.FK_Designer_Workers_circus" FromRole="Workers_circus" ToRole="Designer" />
+          <NavigationProperty Name="Director" Relationship="Self.FK_Director_Workers_circus" FromRole="Workers_circus" ToRole="Director" />
+          <NavigationProperty Name="Gender1" Relationship="Self.FK_Workers_circus_Gender" FromRole="Workers_circus" ToRole="Gender" />
+          <NavigationProperty Name="Job_title1" Relationship="Self.FK_Workers_circus_Job_title" FromRole="Workers_circus" ToRole="Job_title" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="circus_troupe" Relationship="Self.FK_Role_circus_troupe" FromRole="Role" ToRole="circus_troupe" />
+        </EntityType>
+        <Association Name="FK_actor_circus_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="actor_circus" Type="Self.actor_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="actor_circus">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_circus_troupe_actor_circus">
+          <End Role="actor_circus" Type="Self.actor_circus" Multiplicity="1" />
+          <End Role="circus_troupe" Type="Self.circus_troupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="actor_circus">
+              <PropertyRef Name="Id_actor" />
+            </Principal>
+            <Dependent Role="circus_troupe">
+              <PropertyRef Name="actor_circus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Author" Type="Self.Author" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id_author" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_circus_program_presentation">
+          <End Role="presentation" Type="Self.presentation" Multiplicity="1" />
+          <End Role="circus_program" Type="Self.circus_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presentation">
+              <PropertyRef Name="Id_presentation" />
+            </Principal>
+            <Dependent Role="circus_program">
+              <PropertyRef Name="presentation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_circus_troupe_presentation">
+          <End Role="presentation" Type="Self.presentation" Multiplicity="1" />
+          <End Role="circus_troupe" Type="Self.circus_troupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presentation">
+              <PropertyRef Name="Id_presentation" />
+            </Principal>
+            <Dependent Role="circus_troupe">
+              <PropertyRef Name="presentation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_circus_troupe">
+          <End Role="circus_troupe" Type="Self.circus_troupe" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="circus_troupe">
+              <PropertyRef Name="Id_troupe" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_circus_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id_city" />
+            </Principal>
+            <Dependent Role="Workers_circus">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conductor_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Conductor" Type="Self.Conductor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Conductor">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Conductor">
+          <End Role="Conductor" Type="Self.Conductor" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductor">
+              <PropertyRef Name="Id_conductor" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Conductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Designer_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Designer" Type="Self.Designer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Designer">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Designer">
+          <End Role="Designer" Type="Self.Designer" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designer">
+              <PropertyRef Name="Id_designer" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Designer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Director_Workers_circus">
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="1" />
+          <End Role="Director" Type="Self.Director" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers_circus">
+              <PropertyRef Name="Id_worker" />
+            </Principal>
+            <Dependent Role="Director">
+              <PropertyRef Name="worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Director">
+          <End Role="Director" Type="Self.Director" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="Id_director" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_circus_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_gender" />
+            </Principal>
+            <Dependent Role="Workers_circus">
+              <PropertyRef Name="Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="Id_genre" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_circus_Job_title">
+          <End Role="Job_title" Type="Self.Job_title" Multiplicity="1" />
+          <End Role="Workers_circus" Type="Self.Workers_circus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job_title">
+              <PropertyRef Name="Id_job" />
+            </Principal>
+            <Dependent Role="Workers_circus">
+              <PropertyRef Name="Job_title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presentation_type">
+          <End Role="type" Type="Self.type" Multiplicity="1" />
+          <End Role="presentation" Type="Self.presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="Id_type" />
+            </Principal>
+            <Dependent Role="presentation">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tour_schedule_presentation">
+          <End Role="presentation" Type="Self.presentation" Multiplicity="1" />
+          <End Role="tour_schedule" Type="Self.tour_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presentation">
+              <PropertyRef Name="Id_presentation" />
+            </Principal>
+            <Dependent Role="tour_schedule">
+              <PropertyRef Name="presentation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database_circusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="actor_circus" EntityType="Self.actor_circus" />
+          <EntitySet Name="Author" EntityType="Self.Author" />
+          <EntitySet Name="circus_program" EntityType="Self.circus_program" />
+          <EntitySet Name="circus_troupe" EntityType="Self.circus_troupe" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Conductor" EntityType="Self.Conductor" />
+          <EntitySet Name="Designer" EntityType="Self.Designer" />
+          <EntitySet Name="Director" EntityType="Self.Director" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" />
+          <EntitySet Name="History" EntityType="Self.History" />
+          <EntitySet Name="Job_title" EntityType="Self.Job_title" />
+          <EntitySet Name="presentation" EntityType="Self.presentation" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tour_schedule" EntityType="Self.tour_schedule" />
+          <EntitySet Name="type" EntityType="Self.type" />
+          <EntitySet Name="Workers_circus" EntityType="Self.Workers_circus" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <AssociationSet Name="FK_actor_circus_Workers_circus" Association="Self.FK_actor_circus_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="actor_circus" EntitySet="actor_circus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_circus_troupe_actor_circus" Association="Self.FK_circus_troupe_actor_circus">
+            <End Role="actor_circus" EntitySet="actor_circus" />
+            <End Role="circus_troupe" EntitySet="circus_troupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_Workers_circus" Association="Self.FK_Author_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Author" EntitySet="Author" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Author" Association="Self.FK_presentation_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_circus_program_presentation" Association="Self.FK_circus_program_presentation">
+            <End Role="presentation" EntitySet="presentation" />
+            <End Role="circus_program" EntitySet="circus_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_circus_troupe_presentation" Association="Self.FK_circus_troupe_presentation">
+            <End Role="presentation" EntitySet="presentation" />
+            <End Role="circus_troupe" EntitySet="circus_troupe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_circus_troupe" Association="Self.FK_Role_circus_troupe">
+            <End Role="circus_troupe" EntitySet="circus_troupe" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_circus_City" Association="Self.FK_Workers_circus_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conductor_Workers_circus" Association="Self.FK_Conductor_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Conductor" EntitySet="Conductor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Conductor" Association="Self.FK_presentation_Conductor">
+            <End Role="Conductor" EntitySet="Conductor" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Designer_Workers_circus" Association="Self.FK_Designer_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Designer" EntitySet="Designer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Designer" Association="Self.FK_presentation_Designer">
+            <End Role="Designer" EntitySet="Designer" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Director_Workers_circus" Association="Self.FK_Director_Workers_circus">
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+            <End Role="Director" EntitySet="Director" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Director" Association="Self.FK_presentation_Director">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_circus_Gender" Association="Self.FK_Workers_circus_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_Genre" Association="Self.FK_presentation_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_circus_Job_title" Association="Self.FK_Workers_circus_Job_title">
+            <End Role="Job_title" EntitySet="Job_title" />
+            <End Role="Workers_circus" EntitySet="Workers_circus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presentation_type" Association="Self.FK_presentation_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="presentation" EntitySet="presentation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tour_schedule_presentation" Association="Self.FK_tour_schedule_presentation">
+            <End Role="presentation" EntitySet="presentation" />
+            <End Role="tour_schedule" EntitySet="tour_schedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Database_circusModelContainer" CdmEntityContainer="Database_circusEntities">
+          <EntitySetMapping Name="actor_circus">
+            <EntityTypeMapping TypeName="Database_circusModel.actor_circus">
+              <MappingFragment StoreEntitySet="actor_circus">
+                <ScalarProperty Name="Id_actor" ColumnName="Id_actor" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="Database_circusModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Id_author" ColumnName="Id_author" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="circus_program">
+            <EntityTypeMapping TypeName="Database_circusModel.circus_program">
+              <MappingFragment StoreEntitySet="circus program">
+                <ScalarProperty Name="Id_program" ColumnName="Id_program" />
+                <ScalarProperty Name="presentation" ColumnName="presentation" />
+                <ScalarProperty Name="data_premiere" ColumnName="data_premiere" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="daysandtimes" ColumnName="daysandtimes" />
+                <ScalarProperty Name="cost_ticket" ColumnName="cost_ticket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="circus_troupe">
+            <EntityTypeMapping TypeName="Database_circusModel.circus_troupe">
+              <MappingFragment StoreEntitySet="circus troupe">
+                <ScalarProperty Name="Id_troupe" ColumnName="Id_troupe" />
+                <ScalarProperty Name="presentation" ColumnName="presentation" />
+                <ScalarProperty Name="actor_circus" ColumnName="actor_circus" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="Database_circusModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id_city" ColumnName="Id_city" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conductor">
+            <EntityTypeMapping TypeName="Database_circusModel.Conductor">
+              <MappingFragment StoreEntitySet="Conductor">
+                <ScalarProperty Name="Id_conductor" ColumnName="Id_conductor" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designer">
+            <EntityTypeMapping TypeName="Database_circusModel.Designer">
+              <MappingFragment StoreEntitySet="Designer">
+                <ScalarProperty Name="Id_designer" ColumnName="Id_designer" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Director">
+            <EntityTypeMapping TypeName="Database_circusModel.Director">
+              <MappingFragment StoreEntitySet="Director">
+                <ScalarProperty Name="Id_director" ColumnName="Id_director" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="Database_circusModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genre">
+            <EntityTypeMapping TypeName="Database_circusModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="Id_genre" ColumnName="Id_genre" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="Database_circusModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="program_Id" ColumnName="program_Id" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job_title">
+            <EntityTypeMapping TypeName="Database_circusModel.Job_title">
+              <MappingFragment StoreEntitySet="Job title">
+                <ScalarProperty Name="Id_job" ColumnName="Id_job" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presentation">
+            <EntityTypeMapping TypeName="Database_circusModel.presentation">
+              <MappingFragment StoreEntitySet="presentation">
+                <ScalarProperty Name="Id_presentation" ColumnName="Id_presentation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Designer" ColumnName="Designer" />
+                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Database_circusModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_schedule">
+            <EntityTypeMapping TypeName="Database_circusModel.tour_schedule">
+              <MappingFragment StoreEntitySet="tour schedule">
+                <ScalarProperty Name="Id_schedule" ColumnName="Id_schedule" />
+                <ScalarProperty Name="presentation" ColumnName="presentation" />
+                <ScalarProperty Name="data_start" ColumnName="data_start" />
+                <ScalarProperty Name="data_end" ColumnName="data_end" />
+                <ScalarProperty Name="Place_spot" ColumnName="Place_spot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type">
+            <EntityTypeMapping TypeName="Database_circusModel.type">
+              <MappingFragment StoreEntitySet="type">
+                <ScalarProperty Name="Id_type" ColumnName="Id_type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workers_circus">
+            <EntityTypeMapping TypeName="Database_circusModel.Workers_circus">
+              <MappingFragment StoreEntitySet="Workers_circus">
+                <ScalarProperty Name="Id_worker" ColumnName="Id_worker" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Middlename" ColumnName="Middlename" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Job_title" ColumnName="Job_title" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Database_circusModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
